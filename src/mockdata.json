@@ -1,0 +1,18 @@
+[
+    {
+        "subjects": {
+            "10000": {
+                "name": "C Fundamentals",
+                "area": "Software Engineering"      
+              },
+              "10001": {
+                "name": "Java Fundamentals",
+                "area": "Software Engineering"      
+              },
+              "10002": {
+                "name": "C# and .NET Fundamentals",
+                "area": "Software Engineering"      
+              }
+        }
+    }
+]
