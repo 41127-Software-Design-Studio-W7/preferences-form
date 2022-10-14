@@ -1,25 +1,47 @@
 import React from "react";
 
 import { useState, useEffect } from "react";
+import Selected from "./Selected";
+import Suggestion from "./Suggestion";
 
 export default function SearchField(props) {
 
     const [searchTerm, setsearchTerm] = useState("");
+    const [selected, setSelected] = useState([]);
 
     const onChange = (e) => {
         setsearchTerm(e.target.value);
-        //console.log(searchTerm);
     }
 
-    console.log((props.allpossiblesuggestions) );//+ allpossiblesuggestions.isArray());
-    //console.log(typeof(allpossiblesuggestions) + " is array: " );//+ allpossiblesuggestions.isArray());
+    const onClickSuggestion = (e) => {
+        let newSelected = selected.slice();
+        newSelected.push(e);
+        setSelected(newSelected);
+    }
 
-    const mocksubjects = ["10000", "10001", "10002"]
+    const onClickSelected = (e) => {
+
+    }
+
+    //console.log((props.allpossiblesuggestions) );
 
     return (
         <div classname="SearchField"> 
             <div classname="Title">
                 Choose {props.title}:
+            </div>
+            <div>
+                <div>
+                    Selected:
+                </div>
+                <div>
+                    {
+                        selected
+                        .map((sug) => 
+                            (<Selected title={sug} removeFromSelected={onClickSelected}/>)
+                        )
+                    }
+                </div>
             </div>
             <div classname="SearchTextField">
                 <input type="text" value={searchTerm} onChange={onChange} placeholder="Enter search term here">
@@ -28,8 +50,21 @@ export default function SearchField(props) {
             </div>
             <div classname="Suggestions">
             {
-                props.allpossiblesuggestions.map((sub) => 
-                    (<div>{sub}</div> )
+                props
+                .allpossiblesuggestions
+                .filter((sug) => {
+                const subString = searchTerm.toString();
+                const fullName = sug.toString();
+
+                return (
+                    //fullName
+                    subString 
+                    && fullName.includes(subString) 
+                    && fullName !== subString
+                );
+                })
+                .map((sug) => 
+                    (<Suggestion title={sug} updateSelected={onClickSuggestion}/>)
                 )
             }
             </div>
