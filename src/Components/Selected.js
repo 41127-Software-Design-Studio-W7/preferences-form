@@ -2,11 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export default function Selected({key, title, removeFromSelected, index}) {
-    //{props.title}
-
-    //const [idx, setIdx] = useState(-1);
-    
-
     return (
         <div>
             <div className="SearchField"> 

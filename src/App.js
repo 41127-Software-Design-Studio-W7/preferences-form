@@ -46,7 +46,7 @@ const possible_subs = [10000, 10001, 10002, 10003, 10004, 10005]
       <div>
         Course reco's x
       </div>
-      <SearchField title="Subjects" allpossiblesuggestions={possible_subs} />
+      <SearchField title="Completed Subjects" allpossiblesuggestions={possible_subs} />
     </div>
   );
 }
