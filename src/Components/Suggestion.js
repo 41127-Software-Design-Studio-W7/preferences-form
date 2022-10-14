@@ -12,7 +12,7 @@ export default function Suggestion(props) {
     //onClick={props.onClickSuggestion(props.title)}
     return (
         <div>
-            <div classname="SearchField"> 
+            <div className="SearchField"> 
                 {props.title}
             </div>
             <div >

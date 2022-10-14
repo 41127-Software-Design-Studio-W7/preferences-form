@@ -26,8 +26,8 @@ export default function SearchField(props) {
     //console.log((props.allpossiblesuggestions) );
 
     return (
-        <div classname="SearchField"> 
-            <div classname="Title">
+        <div className="SearchField"> 
+            <div className="Title">
                 Choose {props.title}:
             </div>
             <div>
@@ -43,12 +43,12 @@ export default function SearchField(props) {
                     }
                 </div>
             </div>
-            <div classname="SearchTextField">
+            <div className="SearchTextField">
                 <input type="text" value={searchTerm} onChange={onChange} placeholder="Enter search term here">
 
                 </input>
             </div>
-            <div classname="Suggestions">
+            <div className="Suggestions">
             {
                 props
                 .allpossiblesuggestions
@@ -61,6 +61,7 @@ export default function SearchField(props) {
                     subString 
                     && fullName.includes(subString) 
                     && fullName !== subString
+                    && !selected.includes(sug)
                 );
                 })
                 .map((sug) => 
