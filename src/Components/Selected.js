@@ -1,18 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function Selected(props) {
+export default function Selected({key, title, removeFromSelected, index}) {
     //{props.title}
+
+    //const [idx, setIdx] = useState(-1);
+    
+
     return (
         <div>
             <div className="SearchField"> 
-                hmm
+                {index}. {title} 
             </div>
             <div >
-                <button onClick={props.removeFromSelected}>
-
+                <button onClick={() => removeFromSelected(index)}>
+                    X
                 </button>
             </div>
         </div>
     )
 }
+

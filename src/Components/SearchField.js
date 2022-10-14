@@ -13,17 +13,25 @@ export default function SearchField(props) {
         setsearchTerm(e.target.value);
     }
 
-    const onClickSuggestion = (e) => {
+    const onClickSuggestion = (val) => {
+        console.log("Adding suggestion " + val);
+        console.log(val);
         let newSelected = selected.slice();
-        newSelected.push(e);
+        newSelected.push(val); //parseInt(val));
         setSelected(newSelected);
+        console.log(selected);
     }
 
-    const onClickSelected = (e) => {
 
+    const onClickSelected = (index) => {
+        console.log("Removing at index " + index);
+        console.log(selected);
+        const newSelected = [...selected];
+        newSelected.splice(index, 1);
+        setSelected(newSelected);
+        console.log(selected);
     }
 
-    //console.log((props.allpossiblesuggestions) );
 
     return (
         <div className="SearchField"> 
@@ -37,8 +45,8 @@ export default function SearchField(props) {
                 <div>
                     {
                         selected
-                        .map((sug) => 
-                            (<Selected title={sug} removeFromSelected={onClickSelected}/>)
+                        .map((sel, index) => 
+                            (<Selected key={sel._id} title={sel} removeFromSelected={onClickSelected} index={index}/>)
                         )
                     }
                 </div>
@@ -65,7 +73,7 @@ export default function SearchField(props) {
                 );
                 })
                 .map((sug) => 
-                    (<Suggestion title={sug} updateSelected={onClickSuggestion}/>)
+                    (<Suggestion key={sug._id} description="Subject: " title={sug} updateSelected={onClickSuggestion}/>)
                 )
             }
             </div>
