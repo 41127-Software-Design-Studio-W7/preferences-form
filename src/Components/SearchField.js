@@ -77,6 +77,7 @@ export default function SearchField(props) {
                 )
             }
             </div>
+            <hr></hr>
         </div>
     )
 }
