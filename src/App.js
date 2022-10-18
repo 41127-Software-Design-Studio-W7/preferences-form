@@ -1,26 +1,14 @@
 import React from "react";
-import SearchField from "./Components/SearchField";
+import SearchField from "./Components/SearchField/SearchField";
+import Ranking from "./Ranking/Ranking";
 
 function App() {
 
-/*
-  const subjects_mock = [
-    
-    "10000": {
-      "name": "C Fundamentals",
-      "area": "Software Engineering"      
-    },
-    "10001": {
-      "name": "Java Fundamentals",
-      "area": "Software Engineering"      
-    },
-    "10002": {
-      "name": "C# and .NET Fundamentals",
-      "area": "Software Engineering"      
-    }
-]
-*/
 
+/*
+Mock data
+Subjects
+*/
 const subjects_mock = [
   { 
     "id": 10000,
@@ -74,9 +62,12 @@ const subjects_mock = [
     "area": "Electrical Engineering"      
   },
 ]
-
 const possible_subs = [10000, 10001, 10020, 10021, 10030, 10031]
 
+/*
+Mock data
+Areas of Interest
+*/
 const areas_mock = [
   { 
     "id": 100,
@@ -91,9 +82,13 @@ const areas_mock = [
     "name": "Data Science", 
   }
 ]
-
-//const possible_areas = [100, 200, 300]
 const possible_areas = ["Software Engineering", "Electrical Engineering", "Data Science"]
+
+/*
+Mock data
+Preferences - assessment type
+*/
+const assessment_areas = ["Hand In Assignments", "Presentations", "Online Quizzes", "Examinations"]
 
   return (
     <div className="App">
@@ -104,7 +99,28 @@ const possible_areas = ["Software Engineering", "Electrical Engineering", "Data 
       </div>
       <SearchField title="Completed Subjects" allpossiblesuggestions={possible_subs}/>
       <SearchField title="Areas of Interest" allpossiblesuggestions={possible_areas}/>
+      <Ranking title="Assessment Type" rankingitems={assessment_areas} />
+
+      <hr></hr>
+      <hr></hr>
+      <hr></hr>
+      <hr></hr>
+      <input type="range" min={0} max={100} step="1" list="steplist"></input>
+
+      <hr></hr>
+      <datalist id="steplist">
+          <option>0</option>
+          <option>25</option>
+          <option>50</option>
+          <option>75</option>
+          <option>100</option>
+      </datalist>
+
+
+      
+
     </div>
+    
   );
 }
 
